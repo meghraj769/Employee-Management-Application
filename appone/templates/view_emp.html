@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'appone/css/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Table of Employees</title>
+</head>
+<body>
+    
+
+<div class="p-2 pb-0 mt-3">
+    <h2>
+        Employees - Office XYZ
+        <em class="text-muted fs-6">Created by : Meghraj Gupta</em>
+    </h2>    
+</div>
+<hr>
+
+<div class="container">
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">S. No.</th>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Role</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Bonus</th>
+            <th scope="col">Phone No.</th>
+            <th scope="col">Hire Date</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for emp in model %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{emp.id}}</td>
+            <td>{{emp.first_name}}</td>
+            <td>{{emp.last_name}}</td>
+            <td>{{emp.department.name}}</td>
+            <td>{{emp.role.name}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{emp.bonus}}</td>
+            <td>{{emp.phone}}</td>
+            <td>{{emp.hire_date}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<hr>
+<hr>
+<div class="container">
+    <a class="btn btn-link" href="/" role="button">Home!</a>
+    <a class="btn btn-primary" href="/view_emp" role="button">View all Employees</a>
+    <a class="btn btn-warning" href="/add_emp" role="button">Add an Employee</a>
+    <a class="btn btn-danger" href="/remove_emp" role="button">Remove an Employee</a>
+    <a class="btn btn-dark" href="filter_emp" role="button">Filter employees</a>
+</div>
+<hr>
+<hr>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+</script>
+</body>
+</html>
